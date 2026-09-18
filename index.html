@@ -932,21 +932,11 @@ body {
 .boxMail{
     overflow: hidden;
 }
-@media (hover: hover) and (pointer: fine){
-    .boxMail .boxMail-container:hover{
-        transform: rotate(-5deg);
-        filter: drop-shadow(0 0 10px #FF7882);
-    }
-    .boxMail .boxMail-container:hover .card1{
-        transform: translate(-50%, -50%) rotateY(-140deg);
-    }
-}
-/* فتح الغلاف بالدوسة (تاتش) بدل الاعتماد على hover اللي مش موجود في الموبايل */
-.boxMail .boxMail-container.opened{
+.boxMail .boxMail-container:hover{
     transform: rotate(-5deg);
     filter: drop-shadow(0 0 10px #FF7882);
 }
-.boxMail .boxMail-container.opened .card1{
+.boxMail .boxMail-container:hover .card1{
     transform: translate(-50%, -50%) rotateY(-140deg);
 }
 .boxMail .boxMail-container .card1,
@@ -1211,7 +1201,7 @@ body {
 .polaroid.p3{ top: 36%; left: 30%; width: 40%; height: 30%; transform: rotate(3deg); z-index: 3;}
 .polaroid.p4{ bottom: 4%; left: 5%; width: 38%; height: 28%; transform: rotate(-5deg); z-index: 1;}
 .polaroid.p5{ bottom: 3%; right: 5%; width: 40%; height: 30%; transform: rotate(8deg); z-index: 2;}
-@media (max-width: 760px){
+@media (max-width: 760px) and (pointer: fine){
     .collage-title{ font-size: 20px; }
     .page-turn-btn{ width: 32px; height: 32px; font-size: 14px; bottom: 8px; right: 8px; }
     .page-turn-btn.back-btn{ left: 8px; }
@@ -1347,7 +1337,7 @@ body {
     background: transparent;
 }
 
-@media (max-width: 760px){
+@media (max-width: 760px) and (pointer: fine){
     .boxMail .boxMail-container .card2 .letter__text.ar-letter{
         font-size: 14.5px;
         line-height: 1.95;
@@ -1508,6 +1498,25 @@ body {
         width: 30px;
         height: 30px;
         font-size: 12px;
+    }
+}
+
+/* ===== Phone mode: same book as desktop, scaled to fit the screen ===== */
+@media (max-width: 900px) and (pointer: coarse){
+    .boxMail .boxMail-container{
+        width: 920px;
+        height: 580px;
+        max-width: none;
+        max-height: none;
+        flex: none;
+        margin: 0;
+        top: 50%;
+        left: 50%;
+        transform-origin: center center;
+        transform: translate(-50%, -50%) rotate(var(--bk-r, 0deg)) scale(var(--bk-s, .5)) translateX(0);
+    }
+    .boxMail .boxMail-container:hover{
+        transform: translate(-50%, -50%) rotate(var(--bk-r, 0deg)) scale(var(--bk-s, .5)) translateX(var(--bk-shift, 200px));
     }
 }
 
@@ -1830,16 +1839,6 @@ body {
         playMusic();
     }
 
-    // ----- فتح غلاف الكارت بالدوسة (للموبايل اللي معندهوش hover) -----
-    const boxMailContainer = document.querySelector('.boxMail-container');
-    const card1Cover = document.querySelector('.card1');
-    if (boxMailContainer && card1Cover) {
-        card1Cover.addEventListener('click', function (e) {
-            e.stopPropagation();
-            boxMailContainer.classList.toggle('opened');
-        });
-    }
-
     // ----- قلب الصفحة التالتة (كولاج الصور) -----
     const card2Flip = document.querySelector('.card2.flip-page');
     const goToCollage = document.getElementById('goToCollage');
@@ -1862,8 +1861,28 @@ body {
         pauseMusic();
         boxmail.classList.remove('active')
         if (card2Flip) card2Flip.classList.remove('turned');
-        if (boxMailContainer) boxMailContainer.classList.remove('opened');
     })
+
+    // ----- موبايل: نفس شكل الكمبيوتر بالظبط، بس مصغّر ومتظبط على الشاشة -----
+    function fitBook() {
+        const root = document.documentElement;
+        const w = window.innerWidth, h = window.innerHeight;
+        const BOOK_W = 880, BOOK_H = 690;   // مساحة الكتاب وهو مفتوح + الميلان
+        const portrait = h > w;
+        let s;
+        if (portrait) {
+            // الكتاب بيتلف 90° عشان ياخد طول الشاشة كله
+            s = Math.min((h - 20) / BOOK_W, (w - 6) / BOOK_H);
+            root.style.setProperty('--bk-r', '90deg');
+        } else {
+            s = Math.min((w - 20) / BOOK_W, (h - 6) / BOOK_H);
+            root.style.setProperty('--bk-r', '0deg');
+        }
+        root.style.setProperty('--bk-s', s.toFixed(4));
+    }
+    fitBook();
+    window.addEventListener('resize', fitBook);
+    window.addEventListener('orientationchange', function () { setTimeout(fitBook, 200); });
 </script>
 
 </html>
