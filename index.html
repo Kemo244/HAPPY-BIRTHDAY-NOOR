@@ -941,6 +941,14 @@ body {
         transform: translate(-50%, -50%) rotateY(-140deg);
     }
 }
+/* فتح الغلاف بالدوسة (تاتش) بدل الاعتماد على hover اللي مش موجود في الموبايل */
+.boxMail .boxMail-container.opened{
+    transform: rotate(-5deg);
+    filter: drop-shadow(0 0 10px #FF7882);
+}
+.boxMail .boxMail-container.opened .card1{
+    transform: translate(-50%, -50%) rotateY(-140deg);
+}
 .boxMail .boxMail-container .card1,
 .boxMail .boxMail-container .card2{
     position: absolute;
@@ -1822,6 +1830,16 @@ body {
         playMusic();
     }
 
+    // ----- فتح غلاف الكارت بالدوسة (للموبايل اللي معندهوش hover) -----
+    const boxMailContainer = document.querySelector('.boxMail-container');
+    const card1Cover = document.querySelector('.card1');
+    if (boxMailContainer && card1Cover) {
+        card1Cover.addEventListener('click', function (e) {
+            e.stopPropagation();
+            boxMailContainer.classList.toggle('opened');
+        });
+    }
+
     // ----- قلب الصفحة التالتة (كولاج الصور) -----
     const card2Flip = document.querySelector('.card2.flip-page');
     const goToCollage = document.getElementById('goToCollage');
@@ -1844,6 +1862,7 @@ body {
         pauseMusic();
         boxmail.classList.remove('active')
         if (card2Flip) card2Flip.classList.remove('turned');
+        if (boxMailContainer) boxMailContainer.classList.remove('opened');
     })
 </script>
 
