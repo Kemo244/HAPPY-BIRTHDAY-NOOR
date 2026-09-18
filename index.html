@@ -27,7 +27,6 @@
 }
 html{
     height: 100%;
-    overscroll-behavior-y: contain;
 }
 body.locked #wrapper,
 body.locked #musicToggle{
@@ -116,7 +115,6 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overscroll-behavior-y: contain;
     background-image:linear-gradient(var(--color-pink), var(--color-pink));
 }
 #wrapper{
@@ -1252,13 +1250,9 @@ body {
     flex: 1 1 auto;
     min-height: 0;
     overflow-y: auto;
-    overflow-x: hidden;
-    overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
     touch-action: pan-y;
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-    will-change: scroll-position;
+    overscroll-behavior: contain;
     padding: 4px 30px 26px 30px;
     font-family: 'Quicksand', 'Cairo', sans-serif;
     font-size: 16px;
@@ -1343,6 +1337,35 @@ body {
 }
 .boxMail .boxMail-container .card2 .letter__text::-webkit-scrollbar-track{
     background: transparent;
+}
+
+/* --- تلميح إن فيه كمان كلام تحت، لازم تعملي سكرول --- */
+.boxMail .boxMail-container .card2 .scroll-hint{
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.28);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity .3s ease;
+    animation: scrollHintBounce 1.4s ease-in-out infinite;
+    z-index: 5;
+}
+.boxMail .boxMail-container .card2 .scroll-hint.hide{
+    opacity: 0;
+}
+@keyframes scrollHintBounce{
+    0%, 100%{ transform: translateX(-50%) translateY(0); }
+    50%{ transform: translateX(-50%) translateY(6px); }
 }
 
 @media (max-width: 760px) and (pointer: fine){
@@ -1703,6 +1726,7 @@ body {
                                         بحبك أوي ❤️<br>
                                         <b>كريم</b> 🫶🏻</p>
                                 </div>
+                                <div class="scroll-hint" id="scrollHint"><i class="fa-solid fa-chevron-down"></i></div>
                                 <div class="page-turn-btn" id="goToCollage" title="اقلبي الصفحة">
                                     <i class="fa-solid fa-chevron-left"></i>
                                 </div>
@@ -1845,6 +1869,21 @@ body {
         mailBox.classList.toggle('active')
         boxmail.classList.add('active')
         playMusic();
+        setTimeout(updateScrollHint, 400);
+    }
+
+    // ----- تلميح السكرول جوه الرسالة -----
+    const letterText = document.querySelector('.letter__text');
+    const scrollHint = document.getElementById('scrollHint');
+    function updateScrollHint() {
+        if (!letterText || !scrollHint) return;
+        const hasMore = letterText.scrollHeight - letterText.scrollTop - letterText.clientHeight > 10;
+        scrollHint.classList.toggle('hide', !hasMore);
+    }
+    if (letterText && scrollHint) {
+        letterText.addEventListener('scroll', updateScrollHint);
+        window.addEventListener('resize', updateScrollHint);
+        setTimeout(updateScrollHint, 300);
     }
 
     // ----- قلب الصفحة التالتة (كولاج الصور) -----
