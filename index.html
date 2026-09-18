@@ -1867,17 +1867,18 @@ body {
     function fitBook() {
         const root = document.documentElement;
         const w = window.innerWidth, h = window.innerHeight;
-        const BOOK_W = 880, BOOK_H = 690;   // مساحة الكتاب وهو مفتوح + الميلان
-        const portrait = h > w;
-        let s;
-        if (portrait) {
-            // الكتاب بيتلف 90° عشان ياخد طول الشاشة كله
-            s = Math.min((h - 20) / BOOK_W, (w - 6) / BOOK_H);
-            root.style.setProperty('--bk-r', '90deg');
+        let s, shift;
+        if (h > w) {
+            // موبايل واقف: صفحة واحدة بالطول (نفس مقاس صفحة الكمبيوتر) والغلاف بيتفتح ويروح ناحية الشمال
+            s = Math.min((w - 40) / 460, (h - 70) / 580);
+            shift = -10;
         } else {
-            s = Math.min((w - 20) / BOOK_W, (h - 6) / BOOK_H);
-            root.style.setProperty('--bk-r', '0deg');
+            // موبايل بالعرض: الكتاب كله زي الكمبيوتر
+            s = Math.min((w - 20) / 880, (h - 8) / 690);
+            shift = 200;
         }
+        root.style.setProperty('--bk-r', '0deg');
+        root.style.setProperty('--bk-shift', shift + 'px');
         root.style.setProperty('--bk-s', s.toFixed(4));
     }
     fitBook();
