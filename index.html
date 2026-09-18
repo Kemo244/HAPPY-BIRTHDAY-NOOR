@@ -3,10 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#FF7882">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Happy Birthday Website 2.0 | Aoudumber Bade">
     <meta name="github" content="https://github.com/Aoudumber-Bade">
     <title>NOOR Ainy Birthday</title>
@@ -118,7 +115,7 @@ body {
     font-size: 16px;
     margin: 0;
     padding: 0;
-    min-height: 100%;
+    height: 100%;
     overscroll-behavior-y: none;
     background-image:linear-gradient(var(--color-pink), var(--color-pink));
 }
@@ -126,12 +123,9 @@ body {
     position: relative;
     background-color: transparent;
     background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255,1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1) 76%, transparent 77%, transparent);
-    min-height:100%;
+    height:100%;
     background-size:80px 80px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-y: contain;
+    overflow: hidden;
     z-index: 1;
 }
 .flag__birthday{
@@ -709,7 +703,7 @@ body {
 
 #copy {
     position: fixed;
-    bottom: calc(12px + env(safe-area-inset-bottom));
+    bottom: 12px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 1rem;
@@ -1451,8 +1445,8 @@ body {
 }
 .boxMail .fa-xmark{
     position: fixed;
-    top: env(safe-area-inset-top);
-    right: env(safe-area-inset-right);
+    top: 0;
+    right: 0;
     font-size: 30px;
     padding: 10px 25px;
     cursor: pointer;
@@ -1462,8 +1456,8 @@ body {
 /* ----- زرار الموسيقى ----- */
 #musicToggle{
     position: fixed;
-    top: calc(20px + env(safe-area-inset-top));
-    left: calc(20px + env(safe-area-inset-left));
+    top: 20px;
+    left: 20px;
     z-index: 999999999;
     width: 48px;
     height: 48px;
@@ -1491,8 +1485,8 @@ body {
 }
 @media (max-width: 760px){
     #musicToggle{
-        top: calc(12px + env(safe-area-inset-top));
-        left: calc(12px + env(safe-area-inset-left));
+        top: 12px;
+        left: 12px;
         width: 42px;
         height: 42px;
         font-size: 16px;
@@ -1541,7 +1535,7 @@ body {
 }
 
 /* ===== Phone mode: same book as desktop, scaled to fit the screen ===== */
-@media (max-width: 1024px) and (pointer: coarse){
+@media (max-width: 900px) and (pointer: coarse){
     .boxMail .boxMail-container{
         width: 920px;
         height: 580px;
@@ -1931,7 +1925,6 @@ body {
             s = Math.min((w - 20) / 880, (h - 8) / 690);
             shift = 200;
         }
-        s = Math.max(0.32, Math.min(s, 1.4));
         root.style.setProperty('--bk-r', '0deg');
         root.style.setProperty('--bk-shift', shift + 'px');
         root.style.setProperty('--bk-s', s.toFixed(4));
