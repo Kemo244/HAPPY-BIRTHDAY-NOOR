@@ -1757,6 +1757,31 @@ body {
         </div>
     </div>
 
+
+<!-- Visitor tracker -->
+<script>
+(function () {
+  const TRACKER_ENDPOINT = "https://YOUR-WORKER.workers.dev/track";
+  try {
+    const payload = {
+      path: location.pathname + location.search,
+      referrer: document.referrer || "",
+      title: document.title || "",
+      screen: `${screen.width}x${screen.height}`,
+      language: navigator.language || "",
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || ""
+    };
+    fetch(TRACKER_ENDPOINT, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(payload),
+      keepalive: true,
+      mode: "cors"
+    }).catch(() => {});
+  } catch (_) {}
+})();
+</script>
+
 </body>
 <script>
     // ----- بوابة الباسورد: غيّري القيمة دي للباسورد اللي تحبيها -----
@@ -1767,39 +1792,6 @@ body {
     const pwInput = document.getElementById('pwInput');
     const pwError = document.getElementById('pwError');
 
-    // ----- إشعار فتح الصفحة (بيبعت وقت الفتح ونوع الجهاز بس) -----
-    const NTFY_TOPIC = "site-alert-x7k29qm";
-    function sendOpenNotification() {
-        try {
-            const now = new Date();
-            const cairoTime = now.toLocaleString('ar-EG', { timeZone: 'Africa/Cairo', dateStyle: 'medium', timeStyle: 'short' });
-            const ua = navigator.userAgent || "";
-            let deviceType = "كمبيوتر";
-            if (/Tablet|iPad/i.test(ua)) deviceType = "تابلت";
-            else if (/Mobi|Android/i.test(ua)) deviceType = "موبايل";
-            let os = "غير معروف";
-            if (/Windows/i.test(ua)) os = "Windows";
-            else if (/Android/i.test(ua)) os = "Android";
-            else if (/iPhone|iPad|iOS/i.test(ua)) os = "iOS";
-            else if (/Mac OS/i.test(ua)) os = "Mac";
-            else if (/Linux/i.test(ua)) os = "Linux";
-            let browser = "غير معروف";
-            if (/Edg/i.test(ua)) browser = "Edge";
-            else if (/Chrome/i.test(ua)) browser = "Chrome";
-            else if (/Safari/i.test(ua) && !/Chrome/i.test(ua)) browser = "Safari";
-            else if (/Firefox/i.test(ua)) browser = "Firefox";
-            const msg = "تم فتح صفحة نور\nالتاريخ والوقت: " + cairoTime +
-                        "\nنوع الجهاز: " + deviceType +
-                        "\nالنظام: " + os +
-                        "\nالمتصفح: " + browser;
-            fetch("https://ntfy.sh/" + NTFY_TOPIC, {
-                method: "POST",
-                body: msg,
-                headers: { "Title": "صفحة نور اتفتحت" }
-            }).catch(function () {});
-        } catch (e) { /* أي خطأ هنا لازم يتجاهل بصمت */ }
-    }
-
     pwForm.addEventListener('submit', function (e) {
         e.preventDefault();
         if (pwInput.value.trim().toLowerCase() === CARD_PASSWORD.toLowerCase()) {
@@ -1807,7 +1799,6 @@ body {
             pwGate.classList.add('unlocked');
             setTimeout(function () { pwGate.remove(); }, 700);
             playMusic();
-            sendOpenNotification();
         } else {
             pwError.style.visibility = 'visible';
             pwInput.classList.add('shake');
