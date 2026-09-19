@@ -1,45 +1,1937 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>تحت التنفيذ</title>
-
+    <meta name="title" content="Happy Birthday Website 2.0 | Aoudumber Bade">
+    <meta name="github" content="https://github.com/Aoudumber-Bade">
+    <title>🎂NOOR🎂</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+@import url('https://fonts.googleapis.com/css2?family=Coiny&family=Titan+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&family=Sriracha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root{
+    --color-pink: #feecea;
+    --color-white: #fff;
+    --color-black: #333;
+    --color-text-pink: #FF7882;
+    --color-heart: #FF7882;
+    --color-bg-letter: #fff8e4;
+    --color-border: #DACCBF;
+}
+html{
+    height: 100%;
+    overscroll-behavior-y: none;
+}
+body.locked #wrapper,
+body.locked #musicToggle{
+    display: none !important;
+}
+#passwordGate{
+    position: fixed;
+    inset: 0;
+    z-index: 999999999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ffe0e3, #ff9aa2);
+    transition: opacity .6s ease, visibility .6s ease;
+}
+#passwordGate.unlocked{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+.pw-card{
+    background: #fff;
+    border-radius: 22px;
+    padding: 38px 28px;
+    width: 88%;
+    max-width: 340px;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,.28);
+    font-family: "Sriracha", cursive;
+}
+.pw-card h2{
+    font-family: 'Dancing Script', cursive;
+    color: #FF7882;
+    font-size: 30px;
+    margin-bottom: 6px;
+}
+.pw-card p{
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+.pw-card input{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    border-radius: 50px;
+    border: 2px solid #FF7882;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+    margin-bottom: 16px;
+    font-family: "Sriracha", cursive;
+}
+.pw-card input.shake{
+    animation: shakeInput .4s;
+    border-color: #e53935;
+}
+@keyframes shakeInput{
+    0%, 100%{ transform: translateX(0); }
+    20%, 60%{ transform: translateX(-8px); }
+    40%, 80%{ transform: translateX(8px); }
+}
+.pw-card button{
+    background: #FF7882;
+    color: #fff;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 50px;
+    font-family: "Sriracha", cursive;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background .3s;
+}
+.pw-card button:hover{
+    background: #e5636d;
+}
+.pw-error{
+    color: #e53935;
+    font-size: 13px;
+    margin-top: 12px;
+    visibility: hidden;
+}
+body {
+    position: relative;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overscroll-behavior-y: none;
+    background-image:linear-gradient(var(--color-pink), var(--color-pink));
+}
+#wrapper{
+    position: relative;
+    background-color: transparent;
+    background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255,1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1) 76%, transparent 77%, transparent);
+    height:100%;
+    background-size:80px 80px;
+    overflow: hidden;
+    z-index: 1;
+}
+.flag__birthday{
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-200px);
+    animation: translateYFlag 1.5s 2s forwards;
+}
+@keyframes translateYFlag{
+    to{
+        transform: translateY(-10px);
+    }
+}
+.flag__birthday .flag__left{
+    transform: rotate(-10deg) translate(-20px,30px);
+}
+.flag__birthday .flag__right{
+    transform: rotate(10deg) translate(20px,30px) scaleX(-1);
+}
+.content{
+    width: 100%;
+    position: relative;
+    display: flex;
+    padding-top: 3rem;
+}
+.content .left, .content .right{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.content .left{
+    width: 40%;
+}
+.content .right{
+    width: 60%;
+}
+.left .btn{
+    transform: scale(0);
+    animation: scaleCricle 2s 16s forwards ease-in-out;
+}
+#btn__letter{
+    position: relative;
+    margin-top: 30px;
+    background-color: var(--color-text-pink);
+    outline: none;
+    padding: 5px 15px;
+    font-size: 1rem;
+    border-radius: 50px;
+    border: 3px solid var(--color-black);
+    font-family: "Sriracha", cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    transform: scale(1);
+    transition: all .5s ease-in-out;
+}
+#btn__letter:active{
+    transform: scale(0.7);
+}
+#btn__letter i{
+    margin-left: 5px;
+}
+#btn__letter:hover{
+    border-color: var(--color-heart);
+    background-color: var(--color-heart);
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: Arial, sans-serif;
-        }
+#btn__letter:hover i{
+    animation: rotateHeart 1s infinite linear;
+}
+@keyframes rotateHeart{
+    0%,50%, 100%{
+        transform: rotate(0deg);
+    }
+    25%{
+        transform: rotate(12deg);
+    }
+    75%{
+        transform: rotate(-12deg);
+    }
+}
+.title{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: "Titan One", sans-serif;
+    font-size: 3rem;
+    flex-direction: column;
+    perspective: 1000px;
+}
+.title .happy, .title .birthday{
+    position: relative;
+    text-shadow: 4px 4px var(--color-black), 
+                -4px 4px var(--color-black), 
+                4px -4px var(--color-black), 
+                -4px -4px var(--color-black), 
+                4px 8px 0 var(--color-black);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+.title .happy{
+    color: var(--color-white);
+}
+.title .happy span, .title .birthday span{
+    transform: translateY(50px);
+    opacity: 0;
+    visibility: hidden;
+    animation: txtTranslateY .5s var(--t) forwards;
+}
+@keyframes txtTranslateY{
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+.title .birthday{
+    color: var(--color-text-pink);
+}
 
-        .container {
-            width: 100%;
-            min-height: 100vh;
+.title .hat{
+    position: absolute;
+    right: 45px;
+    top: -350px;
+    transform: rotate(-40deg);
+    z-index: -1;
+    animation: topHat 4s 7s forwards ease;
+}
+@keyframes topHat{
+    20%, 30%{
+        top: -30px;
+        transform-origin: left;
+        transform: rotate(-40deg);
+    }
+    35%, 100%{
+        top: -30px;
+        transform: rotate(0deg);
+    }
+}
+.date__of__birth, .name{
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    background-color: var(--color-text-pink);
+    border-radius: 50px;
+    margin-top: 20px;
+    font-family: "Sriracha", cursive;
+    
+}
+.date__of__birth{
+    border: 3px solid var(--color-black);
+    position: relative;
+    transform: translateY(-100px);
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+    width: 0px;
+    animation: dateOfBirth 5s 9s forwards;
+}
+@keyframes dateOfBirth{
+    20%,40%{
+        width: 0px;
+        height: 0;
+        transform: translateY(0px);
+        opacity: 1;
+        visibility: visible;
+    }
+    45%{
+        transform: translateY(0px);
+        opacity: 1;
+        visibility: visible;
+        width: 300px;
+        height: 0px;
+    }
+    50%,100%{
+        transform: translateY(0px);
+        opacity: 1;
+        visibility: visible;
+        width: 300px;
+        height: 50px;
+    }
+}
+.name{
+    position: absolute;
+    padding: 0px 20px;
+    bottom: -20px;
+    border: 3px solid var(--color-black);
+    font-family: 'Dancing Script', cursive;
+}
+.date__of__birth span, .name span{
+    font-weight: bold;
+    margin: 0px 40px;
+}
+.date__of__birth span{
+    font-size: 1.2rem;
+}
+.name span{
+    font-size: 1.7rem;
+}
+.right .box__account{
+    position: relative;
+    transform: translateY(700px);
+    animation: topBoxImage 8s 7s forwards ease-in;
+}
+@keyframes topBoxImage{
+    to{
+        transform: translateY(0);
+    }
+}
+.content .right .image{
+    position: relative;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border: 6px solid var(--color-black);
+}
+.content .right .image img{
+    width: 100%;
+    object-fit: cover;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+}
+.cricle{
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    animation: scaleCricle 3s 15s forwards ease-in-out;
+}
+@keyframes scaleCricle {
+    0%{
+        transform: scale(0);
+    }
+    10%{
+        transform: scale(1.3);
+    }
+    20%{
+        transform: scale(0.7);
+    }
+    30%,100%{
+        transform: scale(1);
+    }
 
-        h1 {
-            font-size: 50px;
-            text-align: center;
-        }
-    </style>
+}
+.text__cricle{
+    width: 100px;
+    height: 100px;
+    background-color: var(--color-text-pink);
+    border-radius: 50%;
+    border: 5px solid var(--color-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: rotateCricle 5s linear infinite;
+}
+@keyframes rotateCricle{
+    to{
+        transform: rotate(360deg);
+    }
+}
+.text__cricle span{
+    top: 0%;
+    left: 50%;
+    position: absolute;
+    color: var(--color-black);
+    transform: rotate(calc(var(--i) * 24deg));
+    transform-origin: 0 45px;
+    font-family: "Sriracha", cursive;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+}
+.fa-heart{
+    color: var(--color-heart);
+    filter: drop-shadow(0 0 3px var(--color-heart));
+    animation: scaleHeart 1s infinite linear;
+}
+.cricle .fa-heart{
+    position: absolute;
+    transform: scale(0.85);
+}
+@keyframes scaleHeart{
+    50%{
+        transform: scale(1.2);
+    }
+}
+.right .balloon_one{
+    position: absolute;
+    top: -70px;
+    left: -70px;
+    animation: balloon1 2s infinite linear;
+}
+@keyframes balloon1{
+    0%, 50%,100%{
+        transform-origin: bottom right;
+        transform: rotate(0deg);
+    }
+    25%{
+        transform-origin: bottom right;
+        transform: rotate(3deg);
+    }
+    75%{
+        transform-origin: bottom right;
+        transform: rotate(-3deg);
+    }
+}
+.right .balloon_two{
+    position: absolute;
+    top: 170px;
+    right: -65px;
+    z-index: -1;
+    transform: rotate(10deg);
+    animation: balloon2 2s infinite linear;
+}
+@keyframes balloon2 {
+    0%,50%,100%{
+        transform-origin: bottom left;
+        transform: rotate(10deg);
+    }
+    25%{
+        transform-origin: bottom left;
+        transform: rotate(7deg);
+    }
+    75%{
+        transform-origin: bottom left;
+        transform: rotate(13deg);
+    }
+}
+
+.decorate_star{
+    position: absolute;
+    transform: scale(0);
+    background-color: var(--color-black);
+    clip-path: polygon(0 50%, 35% 35%, 50% 0, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%);
+    animation: scaleCricle 3s var(--t) forwards, 
+            scaleStar 2s 16s infinite ease-in-out;
+}
+.decorate_star.star1{
+    width: 20px;
+    height: 20px;
+    top: 75px;
+    left: 300px;
+}
+.decorate_star.star2{
+    width: 15px;
+    height: 20px;
+    top: 35px;
+    right: 360px;
+}
+.decorate_star.star3{
+    width: 14px;
+    height: 14px;
+    top: 290px;
+    left: 630px;
+}
+.decorate_star.star4{
+    width: 18px;
+    height: 18px;
+    bottom: 60px;
+    left: 35px;
+}
+.decorate_star.star5{
+    width: 16px;
+    height: 18px;
+    bottom: 140px;
+    left: 500px;
+}
+@keyframes scaleStar {
+    25%{
+        transform: scale(0.8);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+}
+.decorate_bottom{
+    position: absolute;
+    right: 0;
+    bottom: -10px;
+}
+.decorate_flower--one{
+    position: absolute;
+    top: 250px;
+    left: 50px;
+    transform: scale(0);
+    animation: scaleCricle 3s var(--t) forwards ease-in-out;
+}
+.decorate_flower--two{
+    position: absolute;
+    top: 225px;
+    left: 540px;
+    transform: scale(0);
+    animation: scaleCricle 3s var(--t) forwards ease-in-out;
+}
+.decorate_flower--three{
+    position: absolute;
+    top: 150px;
+    right: 235px;
+    transform: scale(0);
+    animation: scaleCricle 3s var(--t) forwards ease-in-out;
+}
+.smiley__icon{
+    position: absolute;
+    bottom: 180px;
+    left: 600px;
+    transform: scale(0);
+    animation: scaleCricle 3s 15s forwards ease-in-out;
+}
+
+
+.box__letter{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.5);
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: none;
+}
+.box__letter .letter__border{
+    position: absolute;
+    width: 55vw;
+    height: 450px;
+    background-color: var(--color-white);
+    border-radius: 27px;
+    padding: 17px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+}
+.letter__border .close{
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    cursor: pointer;
+}
+.letter__border .letter{
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-bg-letter);
+    border-radius: 10px;
+    padding-top: 15px;
+}
+.letter__border .letter .title__letter{
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+    font-size: 2.4rem;
+}
+.title__letter .fa-solid{
+    margin-left: 5px;
+    font-size: 1.3rem;
+}
+.letter__border .letter .content__letter{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding-top: 1.5rem;
+    padding-bottom: 70px;
+}
+.letter__border .letter .content__letter .left{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    padding: 1.7rem;
+    border-right: 3px solid var(--color-border);
+}
+.content__letter .left #heart__letter{
+    opacity: 0;
+    width: 100%;
+}
+#heart__letter.animationOp{
+    animation: opacityHeart 1s 1s forwards;
+}
+@keyframes opacityHeart{
+    to{
+        opacity: 1;
+    }
+}
+.content__letter .left .heart{
+    position: absolute;
+    opacity: 0;
+}
+.content__letter .left .heart.animation{
+    animation: scaleHeartLetter 1s var(--t) infinite ease-in-out;
+}
+@keyframes scaleHeartLetter{
+    0%{
+        opacity: 1;
+        transform: scale(0);
+    }
+    10%{
+        opacity: 1;
+        transform: scale(1.3);
+    }
+    20%{
+        opacity: 1;
+        transform: scale(0.7);
+    }
+    30%,100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+}
+.content__letter .left .heart_1{
+    top: 90px;
+    left: 30px;
+}
+.content__letter .left .heart_2{
+    top: 20px;
+    right: 70px;
+}
+.content__letter .left .heart_3{
+    bottom: 50px;
+    left: 145px;
+}
+.content__letter .left .heart_4{
+    top: 140px;
+    right: 35px;
+}
+.content__letter .right{
+    position: relative;
+    width: 50%;
+}
+.content__letter .right .love__img{
+    opacity: 0;
+    position: absolute;
+    right: 20px;
+    top: -100px;
+}
+.love__img.animationOp{
+    animation: opacityHeart 1s 1s forwards;
+}
+.content__letter .right .text__letter{
+    margin-top: 60px;
+    padding: 20px 15px 10px 15px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.3rem;
+}
+.content__letter .right #mewmew{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+}
+#mewmew.animationOp{
+    animation: opacityHeart 1s 1s forwards;
+}
+
+
+#copy {
+    position: fixed;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+}
+
+#copy a {
+    text-decoration: none;
+    color: #191919d7;
+}
+
+#copy p {
+    color: #4275ff;
+    text-align: center;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 658px)   {
+
+    .flag__birthday .flag__left {
+        transform: rotate(-10deg) translate(-119px,3px);
+    }
+
+    .flag__birthday .flag__right {
+        transform: rotate(10deg) translate(-106px,39px) scaleX(-1);
+    }
+
+    .content {
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 25px;
+        align-items: center;
+        padding-top: 2rem;
+    }
+
+    .title {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        font-family: "Titan One", sans-serif;
+        font-size: 1.5rem;
+        letter-spacing: 8px;
+        flex-direction: column;
+        perspective: 1000px;
+    }
+
+    #btn__letter {
+        position: relative;
+        margin-top: 17px;
+        width: 209px;
+        background-color: var(--color-text-pink);
+        outline: none;
+        padding: 6px 4px;
+        font-size: 1rem;
+        border-radius: 50px;
+        border: 3px solid var(--color-black);
+        font-family: "Sriracha", cursive;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 2;
+        /* transform: scale(1); */
+        transition: all .5s ease-in-out;
+    }
+
+    .cricle {
+        position: absolute;
+        top: 10px;
+        right: -54px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: scale(0);
+        animation: scaleCricle 3s 15s forwards ease-in-out;
+    }
+
+    .title .hat {
+        position: absolute;
+        right: -98px;
+        top: -51px !important;
+        transform: rotate(-40deg);
+        z-index: -1;
+        animation: topHat 4s 7s forwards ease;
+    }
+
+    .box__letter .letter__border {
+        position: absolute;
+        width: 90vw;
+        height: 315px;
+        background-color: var(--color-white);
+        border-radius: 27px;
+        padding: 17px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        display: none;
+    }
+
+    .letter__border .letter {
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-bg-letter);
+        border-radius: 10px;
+        padding-top: 15px;
+    }
+
+    .letter__border .letter .title__letter {
+        text-align: center;
+        font-family: 'Dancing Script', cursive;
+        font-weight: bold;
+        font-size: 1.4rem;
+    }
+
+    .letter__border .letter .content__letter {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        padding-top: .7rem;
+        padding-bottom: 70px;
+    }
+
+    .content__letter .right .text__letter {
+        margin-top: -14px;
+        padding: 20px 15px 10px 15px;
+        font-family: 'Dancing Script', cursive;
+        font-size: .8rem;
+    }
+
+    .content__letter .right .love__img {
+        opacity: 0;
+        position: absolute;
+        right: 126px;
+        top: 167px;
+    }
+
+    .love__img img {
+ 
+            width: 84px;
+
+    }
+
+    .content .right .image {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        border: 6px solid var(--color-black);
+    }
+
+    .name {
+        position: absolute;
+        padding: 0px 3px;
+        bottom: -6px;
+        border: 3px solid var(--color-black);
+    }
+
+    .name span {
+        font-size: 1rem;
+    }
+
+    .right .balloon_one {
+        position: absolute;
+        top: 10px;
+        left: -77px;
+        animation: balloon1 2s infinite linear;
+    }
+
+    .right .balloon_one img{
+        width: 76px !important;
+    }
+
+
+}
+
+
+
+
+
+
+
+.boxMail{
+    position: fixed;
+    background: rgb(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0.3);
+    visibility: hidden;
+    transition: all 0.5s;
+    z-index: 100000000;
+}
+.boxMail.active{
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+.boxMail .boxMail-container{
+    position: absolute;
+    width: 94%;
+    max-width: 920px;
+    height: 88%;
+    max-height: 580px;
+    display: flex;
+    margin: 0;
+    transform: scale(0.9);
+    -webkit-perspective: 2000px;
+    perspective: 2000px;
+    transition: all 0.5s;
+    overflow: visible;
+    box-sizing: border-box;
+}
+.boxMail{
+    overflow: hidden;
+}
+.boxMail .boxMail-container:hover{
+    transform: rotate(-5deg);
+    filter: drop-shadow(0 0 10px #FF7882);
+}
+.boxMail .boxMail-container:hover .card1{
+    transform: translate(-50%, -50%) rotateY(-140deg);
+}
+.boxMail .boxMail-container .card1,
+.boxMail .boxMail-container .card2{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+}
+.boxMail .boxMail-container .card1 {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+}
+.boxMail-container .card1{
+    z-index: 1;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: transform 1s ease-in-out;
+}
+/* Front and back faces of the cover: whichever one is currently
+   facing the viewer is shown; the other is hidden via
+   backface-visibility. This keeps the cover looking like a solid,
+   opaque piece of card at every angle instead of a see-through gap. */
+.card1-face{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.card1-front{
+    background: linear-gradient(to right, #FF7882, #FF7882 63%);
+    color: white;
+}
+.card1-back{
+    background: linear-gradient(115deg, #ff9aa2 0%, #FF7882 45%, #e5636d 100%);
+    box-shadow: inset 14px 0 24px -12px rgba(0,0,0,0.35);
+    transform: rotateY(180deg);
+}
+.card1-back-content{
+    transform: scaleX(-1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+.card1-back-content .userImg{
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid white;
+    margin-bottom: 20px;
+}
+.card1-back-content .userImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.card1-back-content .username{
+    font-family: "Sriracha", cursive;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+.card1-back-content h3{
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+    text-transform: uppercase;
+    width: 80%;
+    text-align: center;
+    line-height: 1.5;
+    letter-spacing: 5px;
+    transform: rotate(-5deg);
+    text-shadow: 0 0 5px white,
+                0 0 10px white;
+}
+.boxMail .boxMail-container .card1 .userImg{
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid white;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+.boxMail .boxMail-container .card1 .userImg img{
+    position: absolute;
+    object-fit: cover;
+    width: calc(100%);
+    height: calc(100%);
+}
+.boxMail .boxMail-container .card1 h3{
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+    text-transform: uppercase;
+    width: 80%;
+    text-align: center;
+    line-height: 1.5;
+    letter-spacing: 5px;
+    transform: rotate(-5deg);
+    text-shadow: 0 0 5px white,
+                0 0 10px white;
+}
+.boxMail .boxMail-container .right-pages{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    -webkit-perspective: 2000px;
+    perspective: 2000px;
+}
+.boxMail .boxMail-container .card2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    height: 100%;
+    transform: none;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: transform 1s ease-in-out;
+    z-index: 2;
+    border: none;
+}
+.boxMail .boxMail-container .card2.turned{
+    transform: rotateY(-165deg);
+}
+.boxMail .boxMail-container .card2-face{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.boxMail .boxMail-container .card2-front{
+    background: linear-gradient(to right, #e0e0e0, #ffffff 30%);
+}
+.boxMail .boxMail-container .card2-back{
+    background: linear-gradient(115deg, #ffd3d7 0%, #FF7882 55%, #e5636d 100%);
+    box-shadow: inset -14px 0 24px -12px rgba(0,0,0,0.35);
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.boxMail .boxMail-container .card2-back span{
+    transform: scaleX(-1);
+    font-size: 40px;
+    filter: drop-shadow(0 0 8px rgba(255,255,255,.5));
+}
+.boxMail .boxMail-container .card3{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: #FF7882;
+    overflow: hidden;
+    border: 1px solid black;
+}
+.page-turn-btn{
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--color-heart);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0,0,0,.35);
+    z-index: 6;
+    transition: transform .3s;
+    user-select: none;
+}
+.page-turn-btn:hover{
+    transform: scale(1.12);
+}
+.page-turn-btn.back-btn{
+    right: auto;
+    left: 14px;
+}
+.collage-wrap{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 26px 20px 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.collage-title{
+    font-family: 'Dancing Script', cursive;
+    font-size: 26px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 6px;
+    flex: 0 0 auto;
+    text-shadow: 0 0 8px rgba(255,255,255,.4);
+}
+.collage-grid{
+    position: relative;
+    width: 100%;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+.polaroid{
+    position: absolute;
+    background: #fff;
+    padding: 6px 6px 20px 6px;
+    box-shadow: 0 6px 14px rgba(0,0,0,.25);
+    border-radius: 3px;
+}
+.polaroid img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #f1e0dc;
+}
+.polaroid span{
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: "Sriracha", cursive;
+    font-size: 12px;
+    color: #b95a63;
+}
+.polaroid.p1{ top: 4%; left: 6%; width: 42%; height: 32%; transform: rotate(-7deg); z-index: 2;}
+.polaroid.p2{ top: 2%; right: 6%; width: 38%; height: 28%; transform: rotate(6deg); z-index: 1;}
+.polaroid.p3{ top: 36%; left: 30%; width: 40%; height: 30%; transform: rotate(3deg); z-index: 3;}
+.polaroid.p4{ bottom: 4%; left: 5%; width: 38%; height: 28%; transform: rotate(-5deg); z-index: 1;}
+.polaroid.p5{ bottom: 3%; right: 5%; width: 40%; height: 30%; transform: rotate(8deg); z-index: 2;}
+@media (max-width: 760px) and (pointer: fine){
+    .collage-title{ font-size: 20px; }
+    .page-turn-btn{ width: 32px; height: 32px; font-size: 14px; bottom: 8px; right: 8px; }
+    .page-turn-btn.back-btn{ left: 8px; }
+}
+.boxMail .boxMail-container .card2 .card2-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #FF7882;
+    transition: all 1s;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Quicksand', 'Cairo', sans-serif;
+    color: #fff;
+}
+.boxMail .boxMail-container:hover .card2-content{
+    transform: translate(20px, 20px);
+    box-shadow: -1px -1px 5px rgb(0, 0, 0, 0.4);
+}
+.boxMail .boxMail-container .card2 h3{
+    font-family: 'Dancing Script', cursive;
+    padding: 22px 0px 6px 60px;
+    font-size: 30px;
+    flex: 0 0 auto;
+    text-shadow: 0 0 8px rgba(255, 255, 255, .55);
+}
+.boxMail .boxMail-container .card2:hover h3{
+    animation: texth3 3s forwards;
+    animation-delay: 2s;
+    transition: 1s;
+}
+@keyframes texth3{
+    0%{
+        opacity: 1;
+        visibility: visible;
+        padding: 20px 0px 10px 60px;
+    }
+    100%{
+        opacity: 1;
+        visibility: visible;
+        padding: 20px 0px 10px 152px; 
+    }
+}
+.boxMail .boxMail-container .card2 .letter__text{
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    overscroll-behavior: contain;
+    padding: 4px 30px 26px 30px;
+    font-family: 'Quicksand', 'Cairo', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.85;
+    letter-spacing: .2px;
+    text-align: left;
+}
+.boxMail .boxMail-container .card2 .letter__text p{
+    margin: 0 0 12px 0;
+}
+.boxMail .boxMail-container .card2 .letter__text .sign{
+    margin-top: 18px;
+    font-size: 17px;
+    line-height: 1.7;
+}
+.boxMail .boxMail-container .card2 .letter__text .sign b{
+    font-weight: 700;
+    font-size: 20px;
+}
+
+/* --- Arabic --- */
+.boxMail .boxMail-container .card2 .letter__text .ar,
+.boxMail .boxMail-container .card2 .letter__text [lang="ar"]{
+    font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+    direction: rtl;
+    unicode-bidi: isolate;
+    font-size: 1.02em;
+    font-weight: 600;
+}
+.boxMail .boxMail-container .card2 .letter__text p.ar-line{
+    direction: rtl;
+    text-align: right;
+    font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+    font-weight: 600;
+    line-height: 2;
+}
+
+/* --- الرسالة بالعربي --- */
+.boxMail .boxMail-container .card2 .letter__text.ar-letter{
+    direction: rtl;
+    text-align: right;
+    font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 2.05;
+    letter-spacing: 0;
+    word-spacing: 1px;
+}
+.boxMail .boxMail-container .card2 .letter__text.ar-letter p{
+    margin: 0 0 13px 0;
+}
+.boxMail .boxMail-container .card2 .letter__text.ar-letter .sign{
+    margin-top: 20px;
+    font-size: 17px;
+    line-height: 1.9;
+}
+.boxMail .boxMail-container .card2 .letter__text.ar-letter .sign b{
+    font-weight: 700;
+    font-size: 21px;
+}
+/* لو الرسالة عربي، خلي العنوان مايل ناحية اليمين */
+.boxMail .boxMail-container .card2:has(.ar-letter) h3{
+    text-align: right;
+    padding: 22px 60px 6px 0px;
+}
+.boxMail .boxMail-container .card2:has(.ar-letter):hover h3{
+    animation: none;
+}
+
+/* --- scrollbar --- */
+.boxMail .boxMail-container .card2 .letter__text{
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,.65) transparent;
+}
+.boxMail .boxMail-container .card2 .letter__text::-webkit-scrollbar{
+    width: 6px;
+}
+.boxMail .boxMail-container .card2 .letter__text::-webkit-scrollbar-thumb{
+    background: rgba(255,255,255,.65);
+    border-radius: 10px;
+}
+.boxMail .boxMail-container .card2 .letter__text::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+/* --- تلميح إن فيه كمان كلام تحت، لازم تعملي سكرول --- */
+.boxMail .boxMail-container .card2 .scroll-hint{
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.28);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity .3s ease;
+    animation: scrollHintBounce 1.4s ease-in-out infinite;
+    z-index: 5;
+}
+.boxMail .boxMail-container .card2 .scroll-hint.hide{
+    opacity: 0;
+}
+@keyframes scrollHintBounce{
+    0%, 100%{ transform: translateX(-50%) translateY(0); }
+    50%{ transform: translateX(-50%) translateY(6px); }
+}
+
+@media (max-width: 760px) and (pointer: fine){
+    .boxMail .boxMail-container .card2 .letter__text.ar-letter{
+        font-size: 14.5px;
+        line-height: 1.95;
+    }
+    .boxMail .boxMail-container .card2:has(.ar-letter) h3{
+        padding: 18px 30px 6px 0px;
+    }
+    .boxMail .boxMail-container{
+        width: 94vw;
+        height: 82vh;
+    }
+    .boxMail .boxMail-container .card2 h3{
+        font-size: 24px;
+        padding-left: 30px;
+    }
+    .boxMail .boxMail-container .card2 .letter__text{
+        font-size: 14.5px;
+        line-height: 1.8;
+        padding: 4px 18px 20px 18px;
+    }
+    .boxMail .boxMail-container .card1 h3{
+        font-size: 28px;
+        letter-spacing: 3px;
+    }
+}
+
+.boxMail .boxMail-container .card2 .card2-content .imageCute2{
+    position: absolute;
+    top: 5px;
+    left: 20px;
+    opacity: 0;
+    transition: 1s;
+}
+.boxMail .boxMail-container .card2 .card2-content:hover .imageCute2{
+    animation: cute3 1s linear infinite,
+                cute4 3s 2s forwards;
+    animation-delay: 2s;
+    transition: 1s;
+}
+@keyframes cute3{
+    0%{
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+    25%{
+        opacity: 1;
+        transform: rotate(5deg);
+    }
+    50%{
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+    75%{
+        opacity: 1;
+        transform: rotate(-5deg);
+    }
+    100%{
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+}
+@keyframes cute4{
+    0%{
+        left: 20px;
+    }
+    100%{
+        left: 100px;
+    }
+}
+.boxMail .boxMail-container .card2 .card2-content .imageCute2 img{
+    width: 40px;
+}
+.boxMail .fa-xmark{
+    position: fixed;
+    top: 0;
+    right: 0;
+    font-size: 30px;
+    padding: 10px 25px;
+    cursor: pointer;
+    color: white;
+    z-index: 10000000000000000;
+}
+/* ----- زرار الموسيقى ----- */
+#musicToggle{
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 999999999;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: #FF7882;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(255, 120, 130, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .3s, box-shadow .3s;
+}
+#musicToggle:hover{
+    transform: scale(1.08);
+}
+#musicToggle.is-playing{
+    animation: musicPulse 1.8s ease-in-out infinite;
+}
+@keyframes musicPulse{
+    0%, 100%{ box-shadow: 0 0 0 0 rgba(255, 120, 130, 0.55); }
+    50%{ box-shadow: 0 0 0 10px rgba(255, 120, 130, 0); }
+}
+@media (max-width: 760px){
+    #musicToggle{
+        top: 12px;
+        left: 12px;
+        width: 42px;
+        height: 42px;
+        font-size: 16px;
+    }
+}
+
+/* ----- زرار الموسيقى جوه الكارت ----- */
+#cardMusicToggle{
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 20;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(3px);
+    transition: transform .25s, background .25s;
+}
+#cardMusicToggle:hover{
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.08);
+}
+#cardMusicToggle.is-playing{
+    animation: cardMusicPulse 1.8s ease-in-out infinite;
+}
+@keyframes cardMusicPulse{
+    0%, 100%{ box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5); }
+    50%{ box-shadow: 0 0 0 8px rgba(255, 255, 255, 0); }
+}
+@media (max-width: 760px){
+    #cardMusicToggle{
+        top: 10px;
+        left: 10px;
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+}
+
+/* ===== Phone mode: same book as desktop, scaled to fit the screen ===== */
+@media (max-width: 900px) and (pointer: coarse){
+    .boxMail .boxMail-container{
+        width: 920px;
+        height: 580px;
+        max-width: none;
+        max-height: none;
+        flex: none;
+        margin: 0;
+        top: 50%;
+        left: 50%;
+        transform-origin: center center;
+        transform: translate(-50%, -50%) rotate(var(--bk-r, 0deg)) scale(var(--bk-s, .5)) translateX(0);
+    }
+    .boxMail .boxMail-container:hover{
+        transform: translate(-50%, -50%) rotate(var(--bk-r, 0deg)) scale(var(--bk-s, .5)) translateX(var(--bk-shift, 200px));
+    }
+}
+
+</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@400;600&family=Quicksand:wght@400;500;600;700&family=Cairo:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="locked">
+    <div id="passwordGate">
+        <div class="pw-card" dir="rtl">
+            <h2>🔒 فيه هدية هنا</h2>
+            <p>اكتبي الباسورد عشان تفتحيها 💖</p>
+            <form id="pwForm" autocomplete="off">
+                <input type="password" id="pwInput" placeholder="الباسورد" inputmode="text">
+                <button type="submit">افتحي 🎁</button>
+                <div class="pw-error" id="pwError">الباسورد غلط، جربي تاني 🙈</div>
+            </form>
+        </div>
+    </div>
+    <audio id="bgMusic" src="./images/music.mp3" loop preload="auto"></audio>
+    <button id="musicToggle" type="button" aria-label="تشغيل/إيقاف الموسيقى">
+        <i class="fa-solid fa-music"></i>
+    </button>
+    <div id="wrapper">
+        <div class="flag__birthday">
+            <img src="./images/1.png" alt="" width="350" class="flag__left">
+            <img src="./images/1.png" alt="" width="350" class="flag__right">
+        </div>
+        <div class="content">
+            <div class="left">
+                <div class="title">
+                    <h1 class="happy">
+                        <span style="--t: 4s;">H</span>
+                        <span style="--t: 4.2s;">a</span>
+                        <span style="--t: 4.4s;">p</span>
+                        <span style="--t: 4.6s;">p</span>
+                        <span style="--t: 4.8s;">y</span>
+                    </h1>
+                    <h1 class="birthday">
+                        <span style="--t: 5s;">B</span>
+                        <span style="--t: 5.2s;">i</span>
+                        <span style="--t: 5.4s;">r</span>
+                        <span style="--t: 5.6s;">t</span>
+                        <span style="--t: 5.8s;">h</span>
+                        <span style="--t: 6s;">d</span>
+                        <span style="--t: 6.2s;">a</span>
+                        <span style="--t: 6.4s;">y</span>
+                    </h1>
+                    <div class="hat">
+                        <img src="./images/hat.png" alt="" width="130">
+                    </div>
+                </div>
+                <div class="date__of__birth">
+                    <span></span>
+                </div>
+                <div class="btn">
+                    <button id="btn__letter">
+                        <div class="mail">
+                            Click Here
+                            <i class="fa-regular fa-envelope"></i>
+                        </div>
+                    </button>
 
-    <div class="container">
-        <h1>تحت التنفيذ</h1>
+                </div>
+            </div>
+            <div class="right">
+                <div class="box__account">
+                    <div class="image">
+                        <img src="./images/unnamed.png" alt="">
+                    </div>
+                    <div class="name">
+                        <i class="fa-solid fa-heart"></i>
+                        <span>NOOR AHMED</span>
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <div class="balloon_one">
+                        <img width="100px" src="./images/balloon1.png" alt="">
+                    </div>
+                    <div class="balloon_two">
+                        <img width="100px" src="./images/balloon2.png" alt="">
+                    </div>
+                </div>
+                <div class="cricle">
+                    <div class="text__cricle">
+                        <span style="--i: 1;">h</span>
+                        <span style="--i: 2;">a</span>
+                        <span style="--i: 3;">p</span>
+                        <span style="--i: 4;">p</span>
+                        <span style="--i: 5;">y</span>
+                        <span style="--i: 6;">-</span>
+                        <span style="--i: 7;">b</span>
+                        <span style="--i: 8;">i</span>
+                        <span style="--i: 9;">r</span>
+                        <span style="--i: 10;">t</span>
+                        <span style="--i: 11;">h</span>
+                        <span style="--i: 12;">d</span>
+                        <span style="--i: 13;">a</span>
+                        <span style="--i: 14;">y</span>
+                        <span style="--i: 15;">-</span>
+                    </div>
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+            </div>
+        </div>
+        <div class="decorate_star star1" style="--t: 15s;"></div>
+        <div class="decorate_star star2" style="--t: 15.2s;"></div>
+        <div class="decorate_star star3" style="--t: 15.4s;"></div>
+        <div class="decorate_star star4" style="--t: 15.6s;"></div>
+        <div class="decorate_star star5" style="--t: 15.8s;"></div>
+        <div class="decorate_flower--one" style="--t: 15s;">
+            <img width="20" src="./images/decorate_flower.png" alt="">
+        </div>
+        <div class="decorate_flower--two" style="--t: 15.3s;">
+            <img width="20" src="./images/decorate_flower.png" alt="">
+        </div>
+        <div class="decorate_flower--three" style="--t: 15.6s;">
+            <img width="20" src="./images/decorate_flower.png" alt="">
+        </div>
+        <div class="decorate_bottom">
+            <img src="./images/decorate.png" alt="" width="100">
+        </div>
+        <div class="smiley__icon">
+            <img src="./images/smiley_icon.png" alt="" width="100">
+        </div>
+
+
+        <div class="boxMail">
+            <i class="fa-solid fa-xmark"></i>
+            <div class="boxMail-container">
+                <div class="card1">
+                    <div class="card1-face card1-front">
+                        <div class="userImg">
+                            <img src="images/unnamed.png" alt="">
+                        </div>
+                        <h4 class="username">To: NOOR 💖<span class="underline"></span></h4>
+
+                        <h3>Happy Birthday</h3>
+                        <div class="imageCute">
+                            <img src="cute1.png" alt="">
+                        </div>
+                    </div>
+                    <div class="card1-face card1-back">
+                        <div class="card1-back-content">
+                            <div class="userImg">
+                                <img src="images/unnamed.png" alt="">
+                            </div>
+                            <h4 class="username">To: NOOR 💖<span class="underline"></span></h4>
+                            <h3>Happy Birthday</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-pages">
+                    <div class="card2 flip-page">
+                        <div class="card2-face card2-front">
+                            <div class="card2-content">
+                                <button id="cardMusicToggle" type="button" aria-label="تشغيل/إيقاف الموسيقى">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </button>
+                                <h3>لنور عيني</h3>
+                                <div class="letter__text ar-letter" dir="rtl" lang="ar">
+                                    <p>كل سنة وإنتي طيبة يا نور عيني ❤️🥳🎂</p>
+                                    <p>لأحلى بنت تمت ال 21 سنة… عجزنا والله 😂❤️</p>
+                                    <p>بتمنالك عمر طويل مليان حاجات حلوة وسعادة وكل اللي نفسك فيه. 🫶🏻✨</p>
+                                    <p>كنت حابب أقول إن الفترة دي كانت بجد من أجمل فترات حياتي ❤️</p>
+                                    <p>كل اللحظات اللي عدّت علينا بحلاوتها وبمشاكلها هتفضل تفرق معايا دايمًا. 🥹❤️</p>
+                                    <p>وكمان سنة بس وتبقي أحلى خريجة في الدنيا 🎓❤️</p>
+                                    <p class="sign">كل سنة وإنتي طيبة يا نور عيني ❤️🎂<br>
+                                        بحبك أوي ❤️<br>
+                                        <b>كريم</b> 🫶🏻</p>
+                                </div>
+                                <div class="scroll-hint" id="scrollHint"><i class="fa-solid fa-chevron-down"></i></div>
+                                <div class="page-turn-btn" id="goToCollage" title="اقلبي الصفحة">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card2-face card2-back">
+                            <span>📸</span>
+                        </div>
+                    </div>
+                    <div class="card3">
+                        <div class="collage-wrap">
+                            <div class="collage-title">اجمل زكريات📸💕</div>
+                            <div class="collage-grid">
+                                <div class="polaroid p1"><img src="images/couple1.jpg" alt="صورة 1"><span>💖عيني بتطلع قلوب</span></div>
+                                <div class="polaroid p2"><img src="images/couple2.jpg" alt="صورة 2"><span>😉اهو ده الكارد بس بطريقتي</span></div>
+                                <div class="polaroid p3"><img src="images/couple3.jpg" alt="صورة 3"><span>😂حاسس ان عليا طار</span></div>
+                                <div class="polaroid p4"><img src="images/couple4.jpg" alt="صورة 4"><span>😂شكلي عبيط فشخ</span></div>
+                                <div class="polaroid p5"><img src="images/couple5.jpg" alt="صورة 5"><span>✨النيلز فاجره</span></div>
+                            </div>
+                        </div>
+                        <div class="page-turn-btn back-btn" id="backToLetter" title="ارجعي للرسالة">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>
+<script>
+    // ----- بوابة الباسورد: غيّري القيمة دي للباسورد اللي تحبيها -----
+    const CARD_PASSWORD = "NOOR2026";
+
+    const pwGate = document.getElementById('passwordGate');
+    const pwForm = document.getElementById('pwForm');
+    const pwInput = document.getElementById('pwInput');
+    const pwError = document.getElementById('pwError');
+
+    pwForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (pwInput.value.trim().toLowerCase() === CARD_PASSWORD.toLowerCase()) {
+            document.body.classList.remove('locked');
+            pwGate.classList.add('unlocked');
+            setTimeout(function () { pwGate.remove(); }, 700);
+            playMusic();
+        } else {
+            pwError.style.visibility = 'visible';
+            pwInput.classList.add('shake');
+            pwInput.value = '';
+            setTimeout(function () { pwInput.classList.remove('shake'); }, 400);
+        }
+    });
+</script>
+<script>
+    let datetxt = "1 october";
+        let titleLetter = "To you";
+    let charArrDate = datetxt.split('');
+    let charArrTitle = titleLetter.split('');
+    let currentIndex = 0;
+    let currentIndexTitle = 0;
+    let date__of__birth = document.querySelector(".date__of__birth span");
+    
+    setTimeout(function () {
+        timeDatetxt = setInterval(function () {
+            if (currentIndex < charArrDate.length) {
+                date__of__birth.textContent += charArrDate[currentIndex];
+                currentIndex++;
+            }
+            else {
+                let i = document.createElement("i");
+                i.className = "fa-solid fa-star"
+                document.querySelector(".date__of__birth").prepend(i)
+                document.querySelector(".date__of__birth").appendChild(i.cloneNode(true))
+                clearInterval(timeDatetxt)
+            }
+        }, 100)
+    }, 12000)
+
+    // (old letter animation code removed - it referenced elements that no longer exist
+    //  and was throwing errors in the console)
+
+    // ----- موسيقى الخلفية -----
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggle = document.getElementById('musicToggle');
+    const cardMusicToggle = document.getElementById('cardMusicToggle');
+    let musicStarted = false;
+
+    function updateMusicIcons() {
+        const icon = bgMusic.paused
+            ? '<i class="fa-solid fa-music"></i>'
+            : '<i class="fa-solid fa-volume-high"></i>';
+        musicToggle.innerHTML = icon;
+        cardMusicToggle.innerHTML = icon;
+        musicToggle.classList.toggle('is-playing', !bgMusic.paused);
+        cardMusicToggle.classList.toggle('is-playing', !bgMusic.paused);
+    }
+
+    function playMusic() {
+        bgMusic.volume = 0.6;
+        bgMusic.play().then(() => {
+            musicStarted = true;
+            updateMusicIcons();
+        }).catch(() => {
+            updateMusicIcons();
+        });
+    }
+
+    function pauseMusic() {
+        bgMusic.pause();
+        updateMusicIcons();
+    }
+
+    function toggleMusic() {
+        bgMusic.paused ? playMusic() : pauseMusic();
+    }
+
+    function startOnFirstInteraction() {
+        if (musicStarted) return;
+        if (document.body.classList.contains('locked')) return;
+        playMusic();
+    }
+
+    document.addEventListener('click', startOnFirstInteraction, { once: false });
+    document.addEventListener('touchstart', startOnFirstInteraction, { once: false });
+
+    musicToggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleMusic();
+    });
+    cardMusicToggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleMusic();
+    });
+
+    let mailBox = document.querySelector('.mail')
+    let boxmail = document.querySelector('.boxMail')
+    var close = document.querySelector('.fa-xmark')
+    mailBox.onclick = function () {
+        mailBox.classList.toggle('active')
+        boxmail.classList.add('active')
+        playMusic();
+        setTimeout(updateScrollHint, 400);
+    }
+
+    // ----- تلميح السكرول جوه الرسالة -----
+    const letterText = document.querySelector('.letter__text');
+    const scrollHint = document.getElementById('scrollHint');
+    function updateScrollHint() {
+        if (!letterText || !scrollHint) return;
+        const hasMore = letterText.scrollHeight - letterText.scrollTop - letterText.clientHeight > 10;
+        scrollHint.classList.toggle('hide', !hasMore);
+    }
+    if (letterText && scrollHint) {
+        letterText.addEventListener('scroll', updateScrollHint);
+        window.addEventListener('resize', updateScrollHint);
+        setTimeout(updateScrollHint, 300);
+    }
+
+    // ----- قلب الصفحة التالتة (كولاج الصور) -----
+    const card2Flip = document.querySelector('.card2.flip-page');
+    const goToCollage = document.getElementById('goToCollage');
+    const backToLetter = document.getElementById('backToLetter');
+
+    if (goToCollage && card2Flip) {
+        goToCollage.addEventListener('click', function (e) {
+            e.stopPropagation();
+            card2Flip.classList.add('turned');
+        });
+    }
+    if (backToLetter && card2Flip) {
+        backToLetter.addEventListener('click', function (e) {
+            e.stopPropagation();
+            card2Flip.classList.remove('turned');
+        });
+    }
+
+    close.addEventListener('click', function () {
+        pauseMusic();
+        boxmail.classList.remove('active')
+        if (card2Flip) card2Flip.classList.remove('turned');
+    })
+
+    // ----- موبايل: نفس شكل الكمبيوتر بالظبط، بس مصغّر ومتظبط على الشاشة -----
+    function fitBook() {
+        const root = document.documentElement;
+        const w = window.innerWidth, h = window.innerHeight;
+        let s, shift;
+        if (h > w) {
+            // موبايل واقف: صفحة واحدة بالطول (نفس مقاس صفحة الكمبيوتر) والغلاف بيتفتح ويروح ناحية الشمال
+            s = Math.min((w - 40) / 460, (h - 70) / 580);
+            shift = -10;
+        } else {
+            // موبايل بالعرض: الكتاب كله زي الكمبيوتر
+            s = Math.min((w - 20) / 880, (h - 8) / 690);
+            shift = 200;
+        }
+        root.style.setProperty('--bk-r', '0deg');
+        root.style.setProperty('--bk-shift', shift + 'px');
+        root.style.setProperty('--bk-s', s.toFixed(4));
+    }
+    fitBook();
+    window.addEventListener('resize', fitBook);
+    window.addEventListener('orientationchange', function () { setTimeout(fitBook, 200); });
+</script>
+
 </html>
