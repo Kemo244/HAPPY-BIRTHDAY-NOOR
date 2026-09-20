@@ -1562,6 +1562,80 @@ body {
         rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<style id="pink-heart-effects">
+#floating-hearts{
+  position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:9998;
+}
+.floating-heart{
+  position:absolute; bottom:-40px; opacity:0;
+  font-size:var(--heart-size,22px);
+  animation:heart-rise var(--heart-duration,5s) ease-out forwards;
+  filter:drop-shadow(0 2px 5px rgba(255,80,140,.18));
+}
+@keyframes heart-rise{
+  0%{transform:translate3d(0,0,0) scale(.7) rotate(0deg);opacity:0}
+  12%{opacity:.9}
+  70%{opacity:.75}
+  100%{transform:translate3d(var(--heart-drift,20px),-110vh,0) scale(1.15) rotate(var(--heart-rotate,25deg));opacity:0}
+}
+.click-heart{
+  position:fixed; pointer-events:none; z-index:10000;
+  font-size:var(--click-size,24px);
+  animation:click-heart-pop .9s cubic-bezier(.2,.8,.2,1) forwards;
+  filter:drop-shadow(0 2px 5px rgba(255,80,140,.22));
+}
+@keyframes click-heart-pop{
+  0%{transform:translate(-50%,-50%) scale(.2) rotate(0);opacity:0}
+  20%{opacity:1}
+  100%{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1.15) rotate(var(--r));opacity:0}
+}
+</style>
+<script id="pink-heart-effects-script">
+(function(){
+  function makeFloatingHeart(){
+    var layer=document.getElementById('floating-hearts');
+    if(!layer) return;
+    var h=document.createElement('span');
+    h.className='floating-heart';
+    h.textContent=['❤','♥','♡','💕','💗'][Math.floor(Math.random()*5)];
+    h.style.left=(Math.random()*100)+'vw';
+    h.style.setProperty('--heart-size',(16+Math.random()*18)+'px');
+    h.style.setProperty('--heart-duration',(5+Math.random()*4)+'s');
+    h.style.setProperty('--heart-drift',((-45+Math.random()*90))+'px');
+    h.style.setProperty('--heart-rotate',((-35+Math.random()*70))+'deg');
+    layer.appendChild(h);
+    setTimeout(function(){h.remove()},10000);
+  }
+  function clickHearts(x,y){
+    for(var i=0;i<9;i++){
+      var h=document.createElement('span');
+      h.className='click-heart';
+      h.textContent=['❤','♥','♡','💕','💗'][Math.floor(Math.random()*5)];
+      h.style.left=x+'px'; h.style.top=y+'px';
+      h.style.setProperty('--click-size',(16+Math.random()*15)+'px');
+      h.style.setProperty('--x',((-75+Math.random()*150))+'px');
+      h.style.setProperty('--y',((-90+Math.random()*120))+'px');
+      h.style.setProperty('--r',((-90+Math.random()*180))+'deg');
+      document.body.appendChild(h);
+      setTimeout(function(el){return function(){el.remove()}}(h),950);
+    }
+  }
+  function setup(){
+    if(document.getElementById('floating-hearts')) return;
+    var layer=document.createElement('div');
+    layer.id='floating-hearts';
+    document.body.appendChild(layer);
+    setInterval(makeFloatingHeart,700);
+    for(var i=0;i<5;i++) setTimeout(makeFloatingHeart,i*250);
+    document.addEventListener('click',function(e){clickHearts(e.clientX,e.clientY)});
+    document.addEventListener('touchstart',function(e){
+      if(e.touches && e.touches[0]) clickHearts(e.touches[0].clientX,e.touches[0].clientY);
+    },{passive:true});
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',setup);
+  else setup();
+})();
+</script>
 </head>
 
 <body class="locked">
@@ -1756,31 +1830,6 @@ body {
             </div>
         </div>
     </div>
-
-
-<!-- Visitor tracker -->
-<script>
-(function () {
-  const TRACKER_ENDPOINT = "https://YOUR-WORKER.workers.dev/track";
-  try {
-    const payload = {
-      path: location.pathname + location.search,
-      referrer: document.referrer || "",
-      title: document.title || "",
-      screen: `${screen.width}x${screen.height}`,
-      language: navigator.language || "",
-      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || ""
-    };
-    fetch(TRACKER_ENDPOINT, {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(payload),
-      keepalive: true,
-      mode: "cors"
-    }).catch(() => {});
-  } catch (_) {}
-})();
-</script>
 
 </body>
 <script>
